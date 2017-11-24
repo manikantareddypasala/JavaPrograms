@@ -33,7 +33,7 @@ public class LinkedList {
 			System.out.print(temp.data + ", ");
 			temp = temp.next;
 		}
-		System.out.print(temp.data);
+		System.out.println(temp.data);
 	}
 	
 	public void addAtBegining(Object data) {
@@ -45,6 +45,8 @@ public class LinkedList {
 	
 	public void remove(Object data) {
 		
+		LinkedList prev = head;
+		
 		if (head != null) {
 			if (head.data.equals(data)) {
 				head = head.next;
@@ -53,9 +55,10 @@ public class LinkedList {
 				while (temp.next != null) {
 					
 					if (temp.data.equals(data)) {
-						
+						prev.next = temp.next;
 					}
-					
+					prev = temp;
+					temp = temp.next;
 				}
 			}
 			
@@ -77,5 +80,78 @@ public class LinkedList {
 		prev.next = null;
 	}
 	
-
+	public void insertAtMidle(Object data) {
+		
+		int position = getMiddlePosition();
+		
+		if (position == -1) {
+			System.out.println("empty list already ");
+			head = new LinkedList(data);
+		} else if(position == 1) {
+			System.out.println("only one element is available");
+			head.next= new LinkedList(data);
+		} else {
+			
+			LinkedList temp = head;
+			LinkedList prev = null;
+			int pointer = 1;
+			
+			while(pointer != position ) {
+				
+				prev = temp;
+				temp= temp.next;
+				pointer ++;
+				
+			}
+			prev.next = new LinkedList(data);
+			prev.next.next = temp;
+		}
+		
+	}
+	
+	public void deleteAtMidle() {
+		
+		int position = getMiddlePosition();
+		
+		if (position == -1) {
+			System.out.println("empty list already ");
+		} else if(position == 1) {
+			System.out.println("only one element is available");
+		} else {
+			
+			LinkedList temp = head;
+			LinkedList prev = null;
+			int pointer = 1;
+			
+			while(pointer != position ) {
+				
+				prev = temp;
+				temp= temp.next;
+				pointer ++;
+				
+			}
+			prev.next = temp.next;
+		}
+	}	
+	
+	public int findLength() {
+		
+		LinkedList temp = head;
+		int len = 0;
+		
+		while(temp != null) {
+			
+			len ++;
+			temp= temp.next;
+		}
+		return len;
+	}
+	
+	public int getMiddlePosition() {
+		
+		if (findLength() != 0)
+			return (findLength()/2)+1;
+		else
+			return -1;
+	}
 }

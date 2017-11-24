@@ -13,24 +13,37 @@ public class LinkedListOperations {
 		
 		ll.traverseLinkedList();
 		
-		System.out.println();
-		
 		ll.addAtBegining(1);
 		
 		ll.traverseLinkedList();
 		
 		ll.removeAtBegining();
 		
-		System.out.println();
 		ll.traverseLinkedList();
+		
 		ll.removeAtEnd();
 		
-		System.out.println();
 		ll.traverseLinkedList();
 		
 		ll.remove(10);
 		
-		System.out.println();
+		ll.traverseLinkedList();
+		
+		ll.add(31);
+		ll.add(55);
+		ll.add(91);
+		
+		System.out.println("length of linked list:"+ ll.findLength());
+		ll.traverseLinkedList();
+		
+		ll.deleteAtMidle();
+		
+		ll.traverseLinkedList();
+		
+		ll.insertAtMidle(100);
+		
+		ll.traverseLinkedList();
+		
 	}
 
 }
